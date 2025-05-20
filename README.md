@@ -10,6 +10,7 @@ pip install -r requirments.txt
 
 ## Training
 **Setting Up Data**
+```
 The directory structure should look like this:
 ├── HCMFDS
 ├── LiTS17
@@ -19,10 +20,11 @@ The directory structure should look like this:
 │   └── trainval
 │           ├── Annotations
 │           └── ...
-
+```
 **Training Command**
+```
 OMP_NUM_THREADS=4 torchrun --master_port 25357 --nproc_per_node=4 train.py exp_id=[some unique id] model=base data=base
-
+```
 ·Change nproc_per_node to change the number of GPUs.
 ·Prepend CUDA_VISIBLE_DEVICES=... if you want to use specific GPUs.
 ·Change master_port if you encounter port collision.
