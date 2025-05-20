@@ -1,0 +1,67 @@
+image_datasets:
+  base: ../static
+  FSS:
+    directory: fss
+    data_structure: 0
+    multiplier: 1
+  DUTS_TR:
+    directory: DUTS-TR
+    data_structure: 1
+    multiplier: 1
+  DUTS_TE:
+    directory: DUTS-TE
+    data_structure: 1
+    multiplier: 1
+  ECSSD:
+    directory: ecssd
+    data_structure: 1
+    multiplier: 1
+  BIG:
+    directory: BIG_small
+    data_structure: 1
+    multiplier: 5
+  HRSOD:
+    directory: HRSOD_small
+    data_structure: 1
+    multiplier: 5
+
+vos_datasets:
+  base: ../
+  # Liver:
+  #   image_directory: Liver/trainval/JPEGImages
+  #   mask_directory: Liver/trainval/Annotations
+  #   multiplier: 2
+  #   frame_interval: 2
+  #   subset: ./cutie/utils/subsets/Liver.txt
+  #   empty_masks: ./cutie/utils/subsets/Liver_empty_masks.txt
+  Lits:
+    image_directory: new_LITS/trainval/JPEGImages
+    mask_directory: new_LITS/trainval/Annotations
+    multiplier: 2
+    frame_interval: 2
+    subset: ./cutie/utils/subsets/Lits_trainval.txt
+    empty_masks: ./cutie/utils/subsets/Lits_empty.txt
+    
+  synpse:
+    image_directory: Synapse/trainval/JPEGImages
+    mask_directory: synpse/trainval/Annotations
+    multiplier: 4
+    frame_interval: 2
+    subset: ./cutie/utils/subsets/synapse_trainval.txt
+    empty_masks: ./cutie/utils/subsets/synapse_empty.txt
+    
+  arota:
+    image_directory: arota/JPEGImages
+    mask_directory: arota/Annotations
+    multiplier: 2
+    frame_interval: 2
+    subset: ./cutie/utils/subsets/arota_trainval.txt
+    empty_masks: null
+ 
+  pancreas:
+    image_directory: pancreas/JPEGImages
+    mask_directory: pancreas/Annotations
+    multiplier: 2
+    frame_interval: 2
+    subset: ./cutie/utils/subsets/pancreas_trainval.txt
+    empty_masks: null

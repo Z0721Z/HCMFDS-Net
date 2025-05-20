@@ -1,0 +1,82 @@
+defaults:
+  - _self_
+  - model: base
+  - override hydra/job_logging: custom-no-rank.yaml
+
+hydra:
+  run:
+    dir: ../output/${exp_id}/${dataset}
+  output_subdir: ${now:%Y-%m-%d_%H-%M-%S}-hydra
+
+exp_id: null
+dataset: arota
+amp: False
+weights: ../output/MD_arota/MD_arota_main_training_last.pth
+output_dir: ./arota # defaults to run_dir; specify this to override
+flip_aug: False
+
+# maximum shortest side of the input; -1 means no resizing
+# With eval_vos.py, we usually just use the dataset's size (resizing done in dataloader)
+# this parameter is added for the sole purpose for the GUI in the current codebase
+# InferenceCore will downsize the input and restore the output to the original size if needed
+# if you are using this code for some other project, you can also utilize this parameter
+max_internal_size: -1
+
+# these parameters, when set, override the dataset's default; useful for debugging
+image_directory: null
+mask_directory: null
+json_directory: null
+size: null
+save_all: null
+use_all_masks: null
+use_long_term: null
+mem_every: null
+
+# only relevant when long_term is not enabled
+max_mem_frames: 5
+
+# only relevant when long_term is enabled
+long_term:
+  count_usage: True
+  max_mem_frames: 10
+  min_mem_frames: 5
+  num_prototypes: 128
+  max_num_tokens: 10000
+  buffer_tokens: 2000
+
+top_k: 30
+stagger_updates: 5
+chunk_size: -1 # number of objects to process in parallel; -1 means unlimited
+save_scores: True
+save_aux: True
+visualize: True
+
+datasets:
+  # Liver:
+  #   image_directory: ../Liver/test/JPEGImages/
+  #   mask_directory: ../Liver/test/Annotations_first_only/
+  #   subset: ../Liver/test/val.txt
+  #   size: 256
+  #   save_all: True
+  #   use_all_masks: True
+  #   use_long_term: False
+  #   mem_every: 5
+  Lits:
+    image_directory: ../../new_LITS/test/JPEGImages/
+    mask_directory: ../../new_LITS/test/Annotations/
+    subset: ../../new_LITS/test.txt
+    size: 384
+    save_all: True
+    use_all_masks: False
+    use_long_term: False
+    mem_every: 5
+ 
+  arota:
+    image_directory: ../../arota-test/JPEGImages/
+    mask_directory: ../../arota-test/Annotations/
+    subset: ../../synapse_test.txt
+    size: 256
+    save_all: True
+    use_all_masks: False
+    use_long_term: False
+    mem_every: 5
