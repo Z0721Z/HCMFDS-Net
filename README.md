@@ -1,5 +1,4 @@
-# HCMFDS-Net: An improved STM Network with Hybrid CNN-Mamba Encoder and Frequency Domain Decoder for CT Organs Segmentation
-
+# HCMFDS-Net
 ![model](https://github.com/user-attachments/assets/708a8d3e-37bb-480f-a5c9-5029a4078f50)
 
 
