@@ -650,17 +650,3 @@ class VSSM(nn.Module):
     def forward(self, x):
         out = self.forward_backbone(x)
         return out
-
-
-medmamba_t = VSSM(depths=[2, 2, 4], dims=[96, 192, 384]).to("cuda")
-medmamba_s = VSSM(depths=[2, 2, 8, 2], dims=[96, 192, 384, 768]).to("cuda")
-medmamba_b = VSSM(depths=[2, 2, 12], dims=[128, 256, 512]).to("cuda")
-
-data = torch.randn(4, 3, 256, 256).to("cuda")
-out = medmamba_t(data)
-# summary(medmamba_t, (3, 256, 256))
-for i in out:
-    print(i.shape)
-
-# print(out[2].shape)
-# print(out)
